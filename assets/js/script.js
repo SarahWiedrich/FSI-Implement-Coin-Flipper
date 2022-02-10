@@ -1,11 +1,38 @@
 // TODO: Declare any global variables we need
+let headCount = 0
+let tailsCount = 0
+
+//TODO: refactor to use functions
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // This is just a sanity check to make sure your JavaScript script is getting loaded
-    // You can remove it once you see it in your browser console in the developer tools
-    console.log('Hi')
+   
+    document.querySelector('#flip').addEventListener('click', function(e){
+        if (Math.random () > 0.5){
+            console.log('Heads')
+            let pennyFace = document.querySelector('#pennyFace')
+            pennyFace.src = 'assets/images/penny-heads.jpg'
+            pennyFace.alt = 'Penny Head Side'
 
+            document.querySelector('#message').textContent = 'You Flipped Heads!'
+
+            headCount++
+
+            document.querySelector('#heads').textContent = headCount
+            document.querySelector('#heads-percent').textContent = Math.round(headCount/(headCount+tailsCount)*100) + '%'
+            document.querySelector('#tails-percent').textContent = Math.round(tailsCount/(headCount+tailsCount)*100) + '%'
+
+        } else {
+            console.log('tails')
+        }
+        let randomNum = Math.random()
+    })
+    // 0.5 is 50/50 
+    //console.log(Math.ceil(Math.random() * 100))
+
+   document.querySelector('#clear').addEventListener('click', function(e){
+       console.log(Math.random())
+   })
     // TODO: Add event listener and handler for flip and clear buttons
 
     // Flip Button Click Handler
